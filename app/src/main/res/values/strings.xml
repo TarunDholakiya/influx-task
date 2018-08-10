@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">InfluxTask</string>
+    <string name="exception_network">No network available, please check your WiFi or Data connection</string>
+</resources>
