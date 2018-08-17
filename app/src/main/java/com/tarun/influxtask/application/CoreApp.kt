@@ -1,13 +1,15 @@
 package com.tarun.influxtask.application
 
 import android.app.Application
+import com.tarun.influxtask.di.AppComponent
 import com.tarun.influxtask.di.AppModule
-import com.tarun.influxtask.di.CoreComponent
+import com.tarun.influxtask.di.DaggerAppComponent
+
 
 open class CoreApp : Application() {
 
     companion object {
-        lateinit var coreComponent: CoreComponent
+        lateinit var appComponent: AppComponent
     }
 
     override fun onCreate() {
@@ -17,6 +19,6 @@ open class CoreApp : Application() {
 
 
     private fun initDI() {
-       coreComponent = DaggerCoreComponent.builder().appModule(AppModule(this)).build()
+        appComponent = DaggerAppComponent.builder().appModule(AppModule(this)).build()
     }
 }

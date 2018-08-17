@@ -1,16 +1,14 @@
-package com.karntrehan.posts.core.di
+package com.tarun.influxtask.di
 
 import android.content.Context
-import com.facebook.stetho.okhttp3.StethoInterceptor
 import com.google.gson.Gson
-import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
-import com.karntrehan.posts.core.BuildConfig
-import com.karntrehan.posts.core.constants.Constants
+import com.tarun.influxtask.rest.RemoteConfig
 import dagger.Module
 import dagger.Provides
 import okhttp3.Cache
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
@@ -25,7 +23,7 @@ class NetworkModule {
             rxJava2CallAdapterFactory: RxJava2CallAdapterFactory,
             okHttpClient: OkHttpClient
     ): Retrofit {
-        return Retrofit.Builder().baseUrl(Constants.API_URL)
+        return Retrofit.Builder().baseUrl(RemoteConfig.BASE_URL)
                 .addConverterFactory(gsonConverterFactory)
                 .addCallAdapterFactory(rxJava2CallAdapterFactory)
                 .client(okHttpClient)
@@ -41,8 +39,8 @@ class NetworkModule {
                 .writeTimeout(30, TimeUnit.SECONDS)
                 .readTimeout(10, TimeUnit.SECONDS)
 
-        if (BuildConfig.DEBUG)
-            client.addNetworkInterceptor(StethoInterceptor())
+        /*if (BuildConfig.DEBUG)
+            client.addNetworkInterceptor(StethoInterceptor())*/
 
         return client.build()
     }

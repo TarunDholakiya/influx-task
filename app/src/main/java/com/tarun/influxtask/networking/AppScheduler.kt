@@ -1,9 +1,7 @@
 package com.tarun.influxtask.networking
 
-import io.reactivex.Scheduler
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
-
 
 /**
  * Implementation of [Scheduler] with actual threads.

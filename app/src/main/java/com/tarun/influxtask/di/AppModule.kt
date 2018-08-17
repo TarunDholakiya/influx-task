@@ -2,9 +2,9 @@ package com.tarun.influxtask.di
 
 import android.content.Context
 import com.tarun.influxtask.networking.AppScheduler
+import com.tarun.influxtask.networking.Scheduler
 import dagger.Module
 import dagger.Provides
-import io.reactivex.Scheduler
 import javax.inject.Singleton
 
 @Module
@@ -19,5 +19,6 @@ class AppModule(val context: Context) {
     @Singleton
     fun scheduler(): Scheduler {
         return AppScheduler()
+
     }
 }
